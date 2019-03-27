@@ -9,7 +9,6 @@ func TestHelloWorld(t *testing.T) {
 	}
 }
 
-// go test -v --bench . --benchmem`
 func BenchmarkHelloWorld(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		HelloWorld()
