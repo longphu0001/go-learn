@@ -59,7 +59,7 @@ if [ ! -d "$GOROOT" ]; then
     if [ -f "$FILE_TAR" ]; then
         rm "$FILE_TAR"
     fi
-    
+
     wget "$LINK_FILE"
     tar zvxf "$FILE_TAR" -C "$HOME/"
     rm "$FILE_TAR"
@@ -79,6 +79,9 @@ export GOBIN="$GOPACKAGE/bin"
 export PATH="$GOROOT/bin:$PATH:$GOPACKAGE/bin"
 
 cd "$GOPACKAGE_SRC/$PROJECT_NAME"
+
+go get -u golang.org/x/lint/golint
+go get -u github.com/golang/dep/cmd/dep
 
 echo "========================================"
 go env
