@@ -80,8 +80,7 @@ export PATH="$GOROOT/bin:$PATH:$GOPACKAGE/bin"
 
 cd "$GOPACKAGE_SRC/$PROJECT_NAME"
 
-go get -u golang.org/x/lint/golint
-go get -u github.com/golang/dep/cmd/dep
+sh sh/go_get_dev.sh
 
 echo "========================================"
 go env
