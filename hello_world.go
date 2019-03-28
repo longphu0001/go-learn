@@ -1,7 +1,6 @@
-// Our first program will print the classic "hello world"
-// message. Here's the full source code.
 package main
 
+// HelloWorld should have a comment documenting it.
 func HelloWorld() string {
 	return "Hello, World!"
 }
