@@ -10,12 +10,10 @@ script:
   - OUT="$(go get -a)"; test -z "$OUT" || (echo "$OUT" && return 1)
   - OUT="$(gofmt -l -d ./)"; test -z "$OUT" || (echo "$OUT" && return 1)
   - OUT="$(go list ./... | grep -v /vendor/ | xargs -n 1 golint)"; test -z "$OUT" || (echo "$OUT" && return 1)
+  - sh sh/go_dep.sh
+  - sh sh/go_test.sh
   - go vet -v ./...
-  - go test -race -v -coverprofile=coverage.txt -covermode=atomic ./
   - go build
-  - dep status
-  - dep ensure
-  - go test -v --bench . --benchmem
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - go test -v -covermode=count -coverprofile=coverage.out
