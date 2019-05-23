@@ -41,6 +41,7 @@ initOS() {
         *) echo "OS ${OS} is not supported by this installation script"; exit 1;;
     esac
     echo "OS = $OS"
+    echo "OS_CYGWIN = $OS_CYGWIN"
 }
 
 # identify platform based on uname output
@@ -54,7 +55,7 @@ GOROOT="$HOME/go"
 GOPACKAGE="$HOME/go_package"
 GOPACKAGE_SRC="$GOPACKAGE/src"
 PROJECT_NAME="$(basename "$PWD")"
-
+echo "Get GO VERSION : $GO_VERSIONGO_VERSION"
 if [ ! -d "$GOROOT" ]; then
     if [ -f "$FILE_TAR" ]; then
         rm "$FILE_TAR"

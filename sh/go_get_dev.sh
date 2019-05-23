@@ -5,6 +5,7 @@ go get -v -u github.com/divan/gofresh
 go get -v -u github.com/gravityblast/fresh
 go get -v -u github.com/derekparker/delve/cmd/dlv
 go get -v -u github.com/golang/dep/cmd/dep
+curl https://glide.sh/get | sh
 
 # testing
 go get -v -u golang.org/x/lint/golint
