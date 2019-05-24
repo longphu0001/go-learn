@@ -4,9 +4,10 @@ go:
   - 1.9.x
   - 1.10.x
   - 1.11.x
+  - 1.12.x
   - tip
 script:
-  - sh sh/go_get_dev.sh
+  - sh sh/go_get_test.sh
   - OUT="$(go get -a)"; test -z "$OUT" || (echo "$OUT" && return 1)
   - OUT="$(gofmt -l -d ./)"; test -z "$OUT" || (echo "$OUT" && return 1)
   - OUT="$(go list ./... | grep -v /vendor/ | xargs -n 1 golint)"; test -z "$OUT" || (echo "$OUT" && return 1)

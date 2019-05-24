@@ -1,4 +1,6 @@
+// +build !test
 // Our first program
+
 package main
 
 import (

@@ -1,4 +1,4 @@
-package main
+package tut
 
 // HelloWorld should have a comment documenting it.
 func HelloWorld() string {

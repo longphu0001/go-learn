@@ -1,12 +1,29 @@
-// https://tutorialedge.net/golang/improving-your-tests-with-testify-go/
-// https://tutorialedge.net/golang/benchmarking-your-go-programs/
-package main
+// +built !test
+
+package tut
 
 import (
+	"fmt"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestMain(m *testing.M) {
+	setup()
+	v := m.Run() // run testing
+	teardown()
+	os.Exit(v)
+}
+
+func setup() {
+	fmt.Println("before testing")
+}
+
+func teardown() {
+	fmt.Println("after testing")
+}
 
 func TestCalculate(t *testing.T) {
 	if Calculate(2) != 4 {

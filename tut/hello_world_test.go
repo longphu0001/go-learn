@@ -1,4 +1,4 @@
-package main
+package tut
 
 import "testing"
 
@@ -11,6 +11,6 @@ func TestHelloWorld(t *testing.T) {
 
 func BenchmarkHelloWorld(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		HelloWorld()
+		HelloGoconvey()
 	}
 }
