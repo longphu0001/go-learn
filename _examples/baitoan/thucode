@@ -1,0 +1,70 @@
+package baitoan
+
+import (
+	"encoding/json"
+	"fmt"
+	"time"
+
+	log "github.com/sirupsen/logrus"
+)
+
+type Member struct {
+	TeamID int
+	Name   string
+}
+
+func main() {
+	fmt.Println("==============================================")
+	start := time.Now()
+	m := map[string]interface{}{
+		"Member": Member{TeamID: 1, Name: "Test"},
+	}
+	log.Info(m)
+
+	var member Member
+
+	memberJson, err := json.Marshal(m["Member"])
+	if err != nil {
+		log.Error(err)
+	}
+	log.Info(memberJson)
+
+	err = json.Unmarshal(memberJson, &member)
+	if err != nil {
+		log.Error(err)
+	}
+
+	log.Info(member)
+	log.Info(member.TeamID)
+	log.Info(member.Name)
+
+	timeTrack(start, "Run Function 1: ")
+
+	fmt.Println("==============================================")
+	defer timeTrack(time.Now(), "Run Function 2: ")
+
+	var requestJson string
+	requestJson = "{\"Member\":{\"TeamID\":1,\"Name\":\"Test\"}, \"Data\":{}}"
+	requestByte := []byte(requestJson)
+
+	log.Info(requestJson)
+	log.Info(requestByte)
+
+	m2 := make(map[string]Member)
+	log.Info(m2)
+	errM2 := json.Unmarshal(requestByte, &m2)
+	if err != nil {
+		log.Error(errM2)
+	}
+	log.Info(m2)
+	if _, ok := m2["Member"]; ok {
+		log.Info(m2["Member"])
+		log.Info(m2["Member"].TeamID)
+	}
+
+}
+
+func timeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %dms", name, elapsed.Nanoseconds()/1000)
+}

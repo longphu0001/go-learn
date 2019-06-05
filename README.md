@@ -16,11 +16,7 @@
 
 ## [Features](markdown/Features.md)
 
-## [Examples](markdown/Examples.md)
-
-## [Setup](markdown/Setup.md)
-
-## [Run](markdown/Run.md)
+## [Setup & Run](markdown/Setup-Run.md)
 
 ## Issue
 

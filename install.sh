@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "sh/project.sh"
+
 initArch() {
     ARCH=$(uname -m)
     if [ -n "$DEP_ARCH" ]; then
@@ -51,11 +53,10 @@ initOS
 GO_VERSION="1.12.1"
 FILE_TAR="go$GO_VERSION.$OS-$ARCH.tar.gz"
 LINK_FILE="https://dl.google.com/go/$FILE_TAR"
-GOROOT="$HOME/go"
-GOPACKAGE="$HOME/go_package"
-GOPACKAGE_SRC="$GOPACKAGE/src"
-PROJECT_NAME="$(basename "$PWD")"
-echo "Get GO VERSION : $GO_VERSIONGO_VERSION"
+echo "Get GO VERSION : $GO_VERSION_GO_VERSION"
+
+
+
 if [ ! -d "$GOROOT" ]; then
     if [ -f "$FILE_TAR" ]; then
         rm "$FILE_TAR"
@@ -74,12 +75,7 @@ if [ ! -e "$GOPACKAGE_SRC/$PROJECT_NAME" ]; then
     ln -s $PWD "$GOPACKAGE_SRC/$PROJECT_NAME"
 fi
 
-export GOROOT="$GOROOT"
-export GOPATH="$GOPACKAGE"
-export GOBIN="$GOPACKAGE/bin"
-export PATH="$GOROOT/bin:$PATH:$GOPACKAGE/bin"
-
-cd "$GOPACKAGE_SRC/$PROJECT_NAME"
+source "sh/export.sh"
 
 sh sh/go_get_dev.sh
 

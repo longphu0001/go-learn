@@ -1,3 +1,3 @@
 # Features
 
-* [A Tour of Go](/tour)
+*   [A Tour of Go](/tour)
